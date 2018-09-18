@@ -1,0 +1,56 @@
+{
+  "name": "radial-label-placement",
+  "version": "0.0.0",
+  "description": "Simplistic label placement in a radial chart",
+  "license": "MIT",
+  "repository": "nkint/radial-label-placement",
+  "author": {
+    "name": "alberto",
+    "email": "alberto.massa@ymail.com",
+    "url": ""
+  },
+  "keywords": [
+    "typescript",
+    "radial",
+    "svg",
+    "canvas",
+    "d3",
+    "pie",
+    "plot"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist; rm -rf demo",
+    "build-dist": "microbundle",
+    "buidl-demo": "mkdir demo; browserify ./src/demo.ts -p [ tsify ] | uglifyjs -cm > demo/index.js; cp -r public/* demo/",
+    "build": "npm run clean; npm run build-dist; npm run buidl-demo; rm src/index.js; ",
+    "start": "budo ./src/demo.ts:index.js --open --live --dir public -- -p [ tsify ]",
+    "test": "tsc && ava"
+  },
+  "source": "src/index.ts",
+  "main": "dist/radial-label-placement.js",
+  "umd:main": "dist/radial-label-placement.umd.js",
+  "module": "dist/radial-label-placement.m.js",
+  "types": "dist/src/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "browserify": "^16.2.2",
+    "budo": "^11.3.2",
+    "microbundle": "^0.6.0",
+    "ts-node": "^7.0.1",
+    "tsify": "^4.0.0",
+    "typescript": "^3.0.1"
+  },
+  "ava": {
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  }
+}
