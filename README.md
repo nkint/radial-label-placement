@@ -2,7 +2,7 @@
 
 > Simplistic label placement in a radial chart
 
-<!-- [![screen](http://i.imgur.com/example.png)](http://nkint.github.io/radial-label-placement/) -->
+[![screen](https://raw.githubusercontent.com/nkint/radial-label-placement/master/screen.png)](http://nkint.github.io/radial-label-placement/)
 
 [(demo)](http://nkint.github.io/radial-label-placement/)
 
