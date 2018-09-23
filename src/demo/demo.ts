@@ -1,6 +1,6 @@
 import { createFit } from 'canvas-fit-margin-ts'
 import { radialLabelPlacement } from '..'
-import { Vec2, Align, Baseline } from './types'
+import { Vec2 } from './types'
 import { getTickData, strokeBoundingBox } from './utils'
 
 const scale = window.devicePixelRatio || 1
@@ -93,4 +93,11 @@ const onResize = () => {
 window.addEventListener('resize', onResize)
 document.onreadystatechange = function() {
   onResize()
+}
+
+if (module.hot) {
+  module.hot.dispose(() => {
+    window.location.reload()
+  })
+} else {
 }

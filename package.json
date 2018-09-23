@@ -21,7 +21,7 @@
   "scripts": {
     "clean": "rm -rf dist; rm -rf demo",
     "build-dist": "microbundle",
-    "buidl-demo": "mkdir demo; browserify ./src/demo/demo.ts -p [ tsify ] | uglifyjs -cm > demo/index.js; cp -r public/* demo/",
+    "build-demo": "mkdir demo; browserify ./src/demo/demo.ts -p [ tsify ] | uglifyjs -cm > demo/index.js; cp -r public/* demo/",
     "build": "npm run clean; npm run build-dist; npm run buidl-demo; rm src/index.js; ",
     "start": "budo ./src/demo/demo.ts:index.js --open --live --dir public -- -p [ tsify ]",
     "test": "tsc && ava"
@@ -39,6 +39,7 @@
     "ava": "^0.25.0",
     "browserify": "^16.2.2",
     "budo": "^11.3.2",
+    "canvas-fit-margin-ts": "^1.0.8",
     "microbundle": "^0.6.0",
     "ts-node": "^7.0.1",
     "tsify": "^4.0.0",
