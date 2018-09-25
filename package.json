@@ -21,8 +21,8 @@
   "scripts": {
     "clean": "rm -rf dist; rm -rf demo",
     "build-dist": "microbundle",
-    "build-demo": "mkdir demo; browserify ./src/demo/demo.ts -p [ tsify ] | uglifyjs -cm > demo/index.js; cp -r public/* demo/",
-    "build": "npm run clean; npm run build-dist; npm run buidl-demo; rm src/index.js; ",
+    "build-demo": "parcel build src/demo/index.html --out-dir demo",
+    "build": "npm run clean; npm run build-dist; npm run buidl-demo",
     "start": "parcel src/demo/index.html",
     "test": "tsc && ava"
   },
