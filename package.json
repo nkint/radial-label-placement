@@ -21,7 +21,7 @@
   "scripts": {
     "clean": "rm -rf dist; rm -rf demo",
     "build-dist": "microbundle",
-    "build-demo": "parcel build src/demo/index.html --out-dir demo",
+    "build-demo": "parcel build src/demo/index.html --out-dir demo --public-url ./",
     "build": "npm run clean; npm run build-dist; npm run buidl-demo",
     "start": "parcel src/demo/index.html",
     "test": "tsc && ava"
