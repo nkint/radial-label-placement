@@ -4,9 +4,9 @@
 
 [![screen](https://raw.githubusercontent.com/nkint/radial-label-placement/master/screen.png)](http://nkint.github.io/radial-label-placement/)
 
-[(demo)](http://nkint.github.io/radial-label-placement/)
+[(demo)](https://nkint.github.io/radial-label-placement/)
 
-<!-- iframe: http://nkint.github.io/radial-label-placement/index.html -->
+<!-- iframe: https://nkint.github.io/radial-label-placement/ -->
 
 ## Description
 
