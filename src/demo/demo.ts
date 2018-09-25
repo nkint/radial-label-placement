@@ -1,5 +1,5 @@
-import { createFit } from 'canvas-fit-margin-ts'
 import { radialLabelPlacement } from '..'
+import { createFit } from 'canvas-fit-margin-ts'
 import { Vec2 } from './types'
 import { getTickData, strokeBoundingBox } from './utils'
 
@@ -10,20 +10,19 @@ const fit = createFit(canvas, { scale })
 document.body.style.margin = '0'
 document.body.appendChild(canvas)
 
-const ticks = [
-  { angle: 0, label: `0`, labelOffset: [0, 15] as Vec2 },
-  { angle: 1 / 4, label: `π / 4`, labelOffset: [0, 35] as Vec2 },
-  { angle: 1 / 2, label: `π / 2`, labelOffset: [0, 35] as Vec2 },
-  { angle: 3 / 4, label: `3/4 π`, labelOffset: [0, 35] as Vec2 },
-  { angle: 1, label: `π`, labelOffset: [0, 25] as Vec2 },
-  { angle: 5 / 4, label: `5/4 π`, labelOffset: [-10, 0] as Vec2 },
-  { angle: 3 / 2, label: `3/2 π`, labelOffset: [0, -95] as Vec2 },
-  { angle: 7 / 4, label: `7/4 π`, labelOffset: [0, 0] as Vec2 },
+const ticks: { angle: number; label: string; labelOffset: Vec2 }[] = [
+  { angle: 0, label: `0`, labelOffset: [0, 15] },
+  { angle: 1 / 4, label: `π / 4`, labelOffset: [0, 35] },
+  { angle: 1 / 2, label: `π / 2`, labelOffset: [0, 35] },
+  { angle: 3 / 4, label: `3/4 π`, labelOffset: [0, 35] },
+  { angle: 1, label: `π`, labelOffset: [0, 25] },
+  { angle: 5 / 4, label: `5/4 π`, labelOffset: [-10, 0] },
+  { angle: 3 / 2, label: `3/2 π`, labelOffset: [0, -95] },
+  { angle: 7 / 4, label: `7/4 π`, labelOffset: [0, 0] },
 ]
 
 function render(width: number, height: number) {
   const radius = Math.min(width, height) * 0.6
-
   const center: Vec2 = [canvas.width / 2, canvas.height / 2]
 
   context.fillStyle = 'black'
@@ -56,7 +55,7 @@ function render(width: number, height: number) {
 
     const { textAlign, textBaseline } = radialLabelPlacement(tick.angle)
 
-    context.font = '48px Inconsolata'
+    context.font = '48px monospace'
     context.textAlign = textAlign
     context.textBaseline = textBaseline
     context.fillText(tick.label, ...tick.p3)
@@ -71,7 +70,7 @@ function render(width: number, height: number) {
     context.arc(tick.p3[0], tick.p3[1], 4, 0, Math.PI * 2)
     context.fill()
 
-    context.font = '18px Inconsolata'
+    context.font = '18px monospace'
     context.fillText(
       `textAlign: ${textAlign}`,
       tick.p3[0] + tick.labelOffset[0],
@@ -94,10 +93,8 @@ window.addEventListener('resize', onResize)
 document.onreadystatechange = function() {
   onResize()
 }
+onResize()
 
 if (module.hot) {
-  module.hot.dispose(() => {
-    window.location.reload()
-  })
-} else {
+  module.hot.dispose(() => canvas.remove())
 }
