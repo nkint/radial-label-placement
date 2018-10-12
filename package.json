@@ -1,6 +1,6 @@
 {
   "name": "radial-label-placement",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Simplistic label placement in a radial chart",
   "license": "MIT",
   "repository": "nkint/radial-label-placement",
