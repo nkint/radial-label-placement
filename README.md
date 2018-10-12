@@ -68,6 +68,12 @@ Default: `false`
 
 Lorem ipsum.
 
+## Note
+
+AVA typescript test are currently broken because ts-node does not support es6 import yet:
+https://github.com/TypeStrong/ts-node/issues/313
+To run test change module resolution to `"commonjs"` in tsconfig
+
 ## License
 
 MIT © [alberto](https://github.com/nkint)
