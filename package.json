@@ -39,7 +39,7 @@
     "parcel-bundler": "^1.10.0"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
+    "ava": "^1.0.0-beta.8",
     "canvas-fit-margin-ts": "^1.0.8",
     "microbundle": "^0.6.0",
     "ts-node": "^7.0.1",
