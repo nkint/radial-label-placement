@@ -1,7 +1,8 @@
 import test from 'ava'
 import { radialLabelPlacement } from '../src'
+import { degToRad } from '../src/utils'
 
-test('common case', t => {
+test('common case', (t) => {
   const expected = [
     { textAlign: 'start', textBaseline: 'middle' },
     { textAlign: 'start', textBaseline: 'top' },
@@ -14,26 +15,46 @@ test('common case', t => {
     { textAlign: 'start', textBaseline: 'middle' },
   ]
 
-  const input = [0, 1 / 4, 1 / 2, 3 / 4, 1, 5 / 4, 3 / 2, 7 / 4, 2].map(x => x * Math.PI)
+  const input = [0, 1 / 4, 1 / 2, 3 / 4, 1, 5 / 4, 3 / 2, 7 / 4, 2].map((x) => x * Math.PI)
 
   const output = input.map(radialLabelPlacement)
 
   t.deepEqual(expected, output)
 })
 
-test('Math.PI * 2 - 0.001', t => {
+test('Math.PI * 2 - 0.001', (t) => {
   const expected = { textAlign: 'start', textBaseline: 'bottom' }
   const input = Math.PI * 2 - 0.1
   const output = radialLabelPlacement(input)
   t.deepEqual(expected, output)
 })
 
-test('More then Math.PI * 2', t => {
+test('More then Math.PI * 2', (t) => {
   const expected = { textAlign: 'start', textBaseline: 'middle' }
   const input = [0.1, Math.PI * 2 + 0.1]
 
-  input.forEach(i => {
+  input.forEach((i) => {
     const output0 = radialLabelPlacement(i)
     t.deepEqual(expected, output0)
   })
+})
+
+test('Negative angles', (t) => {
+  const expected = [
+    { textAlign: 'start', textBaseline: 'middle' },
+    { textAlign: 'start', textBaseline: 'bottom' },
+    { textAlign: 'center', textBaseline: 'bottom' },
+    { textAlign: 'end', textBaseline: 'bottom' },
+    { textAlign: 'end', textBaseline: 'middle' },
+    { textAlign: 'end', textBaseline: 'top' },
+    { textAlign: 'center', textBaseline: 'top' },
+    { textAlign: 'start', textBaseline: 'top' },
+    { textAlign: 'start', textBaseline: 'middle' },
+  ]
+
+  const input = [0, 45, 90, 135, 180, 225, 270, 315, 360].map((x) => -degToRad(x))
+
+  const output = input.map(radialLabelPlacement)
+
+  t.deepEqual(expected, output)
 })

@@ -6,11 +6,11 @@ export declare function getTickData(ticks: {
     labelOffset: Vec2;
 }[], radius: number, center: Vec2): {
     angle: number;
-    p1: [number, number];
-    p2: [number, number];
-    p3: [number, number];
+    p1: Vec2;
+    p2: Vec2;
+    p3: Vec2;
     label: string;
-    labelOffset: [number, number];
+    labelOffset: Vec2;
 }[];
 export declare function strokeBoundingBox(context: CanvasRenderingContext2D, point: Vec2, width: number, height: number, textAlign: Align, textBaseline: Baseline): void;
 export declare const offsetX: {

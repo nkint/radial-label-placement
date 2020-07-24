@@ -65,10 +65,10 @@ Edges:
 
 */
 
-const isInRange = (x: number, minMax: number[]): boolean => x >= minMax[0] && x <= minMax[1]
+import { radToDeg, mod, isInRange } from './utils'
 
 export const radialLabelPlacement = (angleRadians: number) => {
-  const angle = ((180 * angleRadians) / Math.PI) % 360
+  const angle = mod(radToDeg(angleRadians), 360)
 
   let textAlign: 'center' | 'end' | 'start' = 'center'
   let textBaseline: 'top' | 'middle' | 'bottom' = 'middle'
